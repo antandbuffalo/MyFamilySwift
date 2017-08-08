@@ -6,81 +6,81 @@
 	<array>
 		<dict>
 			<key>mId</key>
-			<string>101</string>
+			<integer>101</integer>
 			<key>mName</key>
 			<string>Sundararajaiyar</string>
 			<key>coupleId</key>
-			<string>1001</string>
+			<integer>1001</integer>
 			<key>isDied</key>
 			<true/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>102</string>
+			<integer>102</integer>
 			<key>mName</key>
 			<string>Rajalakshmi</string>
 			<key>coupleId</key>
-			<string>1001</string>
+			<integer>1001</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>103</string>
+			<integer>103</integer>
 			<key>mName</key>
 			<string>Ramamoorthi</string>
 			<key>coupleId</key>
-			<string>1002</string>
+			<integer>1002</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>104</string>
+			<integer>104</integer>
 			<key>mName</key>
 			<string>Mami</string>
 			<key>coupleId</key>
-			<string>1002</string>
+			<integer>1002</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>105</string>
+			<integer>105</integer>
 			<key>mName</key>
 			<string>KSR</string>
 			<key>coupleId</key>
-			<string>1003</string>
+			<integer>1003</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>106</string>
+			<integer>106</integer>
 			<key>mName</key>
 			<string>KSR Mami</string>
 			<key>coupleId</key>
-			<string>1003</string>
+			<integer>1003</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>107</string>
+			<integer>107</integer>
 			<key>mName</key>
 			<string>Janaki</string>
 			<key>coupleId</key>
-			<string>1004</string>
+			<integer>1004</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
 		<dict>
 			<key>mId</key>
-			<string>108</string>
+			<integer>108</integer>
 			<key>mName</key>
 			<string>Janaki Bhavi</string>
 			<key>coupleId</key>
-			<string>1004</string>
+			<integer>1004</integer>
 			<key>isDied</key>
 			<false/>
 		</dict>
@@ -89,43 +89,43 @@
 	<array>
 		<dict>
 			<key>husbandId</key>
-			<string>101</string>
+			<integer>101</integer>
 			<key>coupleId</key>
-			<string>1001</string>
+			<integer>1001</integer>
 			<key>wifeId</key>
-			<string>102</string>
+			<integer>102</integer>
 			<key>pId</key>
-			<string>0</string>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>husbandId</key>
-			<string>103</string>
+			<integer>103</integer>
 			<key>coupleId</key>
-			<string>1002</string>
+			<integer>1002</integer>
 			<key>wifeId</key>
-			<string>104</string>
+			<integer>104</integer>
 			<key>pId</key>
-			<string>1001</string>
+			<integer>1001</integer>
 		</dict>
 		<dict>
 			<key>husbandId</key>
-			<string>105</string>
+			<integer>105</integer>
 			<key>coupleId</key>
-			<string>1003</string>
+			<integer>1003</integer>
 			<key>wifeId</key>
-			<string>106</string>
+			<integer>106</integer>
 			<key>pId</key>
-			<string>1001</string>
+			<integer>1001</integer>
 		</dict>
 		<dict>
 			<key>husbandId</key>
-			<string>107</string>
+			<integer>107</integer>
 			<key>coupleId</key>
-			<string>1004</string>
+			<integer>1004</integer>
 			<key>wifeId</key>
-			<string>108</string>
+			<integer>108</integer>
 			<key>pId</key>
-			<string>1002</string>
+			<integer>1002</integer>
 		</dict>
 	</array>
 </dict>

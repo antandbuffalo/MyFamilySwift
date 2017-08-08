@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -14,9 +15,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var members: [Members] = [];
+    var couples: [Couples] = [];
+    var displayData: [Dictionary<String, String>] = [];
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members.count;
+        return displayData.count;
+        //return members.count;
+        //return couples.count;
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -26,10 +31,66 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath);
         
-        cell.textLabel?.text = members[indexPath.row].mName;
+        cell.textLabel?.text = displayData[indexPath.row]["title"];
+        
+        //cell.textLabel?.text = members[indexPath.row].mName;
+        
+        //cell.textLabel?.text = String(couples[indexPath.row].coupleId);
         
         return cell;
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(displayData[indexPath.row]);
+        if let pid = displayData[indexPath.row]["coupleId"] {
+            fetchProperData(pid: Int(pid)!);
+        }
+    }
+    
+    func asdf(a: String) -> String {
+        return "";
+    }
+    
+    func fetchProperData(pid: Int) {
+        
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate);
+        let context = appDelegate.persistentContainer.viewContext;
+        
+        let parentPredicate = NSPredicate(format: "%K = %d", "pId", pid);
+        let fetchRequest: NSFetchRequest = Couples.fetchRequest();
+        fetchRequest.predicate = parentPredicate;
+        
+        displayData.removeAll();
+        
+        do {
+            let couples = try context.fetch(fetchRequest)
+            //print(couples)
+            for couple in couples {
+                
+                let memberPredicate = NSPredicate(format: "%K = %d", "coupleId", couple.coupleId);
+                let fetchMembers: NSFetchRequest = Members.fetchRequest();
+                fetchMembers.predicate = memberPredicate;
+                
+                let husWife = try context.fetch(fetchMembers);
+                
+                var dic = ["title" : "", "coupleId": ""];
+                dic["coupleId"] = String(couple.coupleId);
+                
+                for mem in husWife {
+                    
+                    dic["title"] = dic["title"]! + " " + mem.mName!;
+                }
+                displayData.append(dic);
+                print(displayData);
+            }
+            
+            
+        } catch {
+            
+        }
+        tableView.reloadData();
+
+    };
     
     func fetchData() {
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate);
@@ -37,6 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         do {
             members = try context.fetch(Members.fetchRequest())
+            couples = try context.fetch(Couples.fetchRequest())
         } catch {
             print("Fetching Failed")
         }
@@ -47,14 +109,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate);
         let context = appDelegate.persistentContainer.viewContext;
         
+        let fetchMembers = NSFetchRequest<NSFetchRequestResult>(entityName: "Members")
+        let requestMembers = NSBatchDeleteRequest(fetchRequest: fetchMembers)
+        
+        let fetchCouples = NSFetchRequest<NSFetchRequestResult>(entityName: "Couples")
+        let requestCouples = NSBatchDeleteRequest(fetchRequest: fetchCouples)
+
+        
         do {
-            members = try context.fetch(Members.fetchRequest());
-            members.removeAll(keepingCapacity: false);
-            var couples = try context.fetch(Couples.fetchRequest());
-            couples.removeAll(keepingCapacity: false);
+            try context.execute(requestMembers)
+            try context.execute(requestCouples)
             
+            try context.save()
         } catch {
-            print("Fetching Failed")
+            print ("There was an error")
         }
     }
     
@@ -93,14 +161,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             //loading couples table
             if let innerArray:Array<AnyObject> = dict["Couples"] as? Array {
-                //print(innerArray);
+                print(innerArray);
                 for item in innerArray {
                     let couple = Couples(context: context);
                     
                     if let coupleId = item["coupleId"] as? Int {
                         couple.coupleId = Int16(coupleId);
                     }
-                    if let pId = item["coupleId"] as? Int {
+                    if let pId = item["pId"] as? Int {
                         couple.pId = Int16(pId);
                     }
                     if let husbandId = item["husbandId"] as? Int {
@@ -124,16 +192,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self;
         tableView.dataSource = self;
         
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate);
-        let context = appDelegate.persistentContainer.viewContext;
-        let member = Members(context: context);
-        member.mId = 101;
-        member.coupleId = 0;
-        member.mName = "Sundharrajaiyar";
-//        appDelegate.saveContext();
-        
-        insertData();
-        fetchData();
+        //deleteAllData();
+        //insertData();
+        //fetchData();
+        fetchProperData(pid: 0);
+        //fetchProperData(pid: 1001);
     }
 
     override func didReceiveMemoryWarning() {
