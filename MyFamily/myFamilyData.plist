@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Members</key>
+	<key>Members1</key>
 	<array>
 		<dict>
 			<key>mId</key>
@@ -85,7 +85,130 @@
 			<false/>
 		</dict>
 	</array>
-	<key>Couples</key>
+	<key>Members</key>
+	<array>
+		<dict>
+			<key>mId</key>
+			<integer>101</integer>
+			<key>mName</key>
+			<string>Sundaragopal</string>
+			<key>coupleId</key>
+			<real>1001</real>
+			<key>isDied</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>102</integer>
+			<key>mName</key>
+			<string>Dhanalakshmi</string>
+			<key>coupleId</key>
+			<real>1001</real>
+			<key>isDied</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>103</integer>
+			<key>mName</key>
+			<string>Nagarajan</string>
+			<key>coupleId</key>
+			<real>1002</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>104</integer>
+			<key>mName</key>
+			<string>Shanthi</string>
+			<key>coupleId</key>
+			<real>1002</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>105</integer>
+			<key>mName</key>
+			<string>Maheshwari</string>
+			<key>coupleId</key>
+			<real>1003</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>106</integer>
+			<key>mName</key>
+			<string>Loganathan</string>
+			<key>coupleId</key>
+			<real>1003</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>107</integer>
+			<key>mName</key>
+			<string>Shantharam</string>
+			<key>coupleId</key>
+			<real>1004</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>108</integer>
+			<key>mName</key>
+			<string>Parvatha Varthani</string>
+			<key>coupleId</key>
+			<real>1004</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>109</integer>
+			<key>mName</key>
+			<string>Ramani bai</string>
+			<key>coupleId</key>
+			<real>1005</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>110</integer>
+			<key>mName</key>
+			<string>Santharam</string>
+			<key>coupleId</key>
+			<integer>1005</integer>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>111</integer>
+			<key>mName</key>
+			<string>Yogesh</string>
+			<key>coupleId</key>
+			<real>1006</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>112</integer>
+			<key>mName</key>
+			<string>Harilekha</string>
+			<key>coupleId</key>
+			<real>1006</real>
+			<key>isDied</key>
+			<false/>
+		</dict>
+	</array>
+	<key>Couples2</key>
 	<array>
 		<dict>
 			<key>husbandId</key>
@@ -126,6 +249,69 @@
 			<integer>108</integer>
 			<key>pId</key>
 			<integer>1002</integer>
+		</dict>
+	</array>
+	<key>Couples</key>
+	<array>
+		<dict>
+			<key>husbandId</key>
+			<integer>101</integer>
+			<key>coupleId</key>
+			<real>1001</real>
+			<key>wifeId</key>
+			<integer>102</integer>
+			<key>pId</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>husbandId</key>
+			<integer>103</integer>
+			<key>coupleId</key>
+			<integer>1002</integer>
+			<key>wifeId</key>
+			<integer>104</integer>
+			<key>pId</key>
+			<integer>1001</integer>
+		</dict>
+		<dict>
+			<key>husbandId</key>
+			<integer>105</integer>
+			<key>coupleId</key>
+			<integer>1003</integer>
+			<key>wifeId</key>
+			<integer>106</integer>
+			<key>pId</key>
+			<integer>1001</integer>
+		</dict>
+		<dict>
+			<key>husbandId</key>
+			<integer>107</integer>
+			<key>coupleId</key>
+			<integer>1004</integer>
+			<key>wifeId</key>
+			<integer>108</integer>
+			<key>pId</key>
+			<real>1001</real>
+		</dict>
+		<dict>
+			<key>husbandId</key>
+			<integer>109</integer>
+			<key>coupleId</key>
+			<real>1005</real>
+			<key>wifeId</key>
+			<integer>110</integer>
+			<key>pId</key>
+			<real>1001</real>
+		</dict>
+		<dict>
+			<key>husbandId</key>
+			<integer>111</integer>
+			<key>coupleId</key>
+			<real>1006</real>
+			<key>wifeId</key>
+			<integer>112</integer>
+			<key>pId</key>
+			<real>1002</real>
 		</dict>
 	</array>
 </dict>

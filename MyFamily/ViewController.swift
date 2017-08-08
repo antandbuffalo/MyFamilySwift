@@ -47,10 +47,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func asdf(a: String) -> String {
-        return "";
-    }
-    
     func fetchProperData(pid: Int) {
         
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate);
@@ -192,8 +188,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self;
         tableView.dataSource = self;
         
-        //deleteAllData();
-        //insertData();
+        deleteAllData();
+        insertData();
         //fetchData();
         fetchProperData(pid: 0);
         //fetchProperData(pid: 1001);
