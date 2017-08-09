@@ -13,10 +13,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
     
     var members: [Members] = [];
     var couples: [Couples] = [];
     var displayData: [Dictionary<String, String>] = [];
+    var parentId : [Int] = [];
+    
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        if parentId.count > 0 {
+            fetchProperData(pid: parentId.popLast()!);
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayData.count;
@@ -31,7 +39,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath);
         
-        cell.textLabel?.text = displayData[indexPath.row]["title"];
+        let label: UILabel = cell.viewWithTag(101) as! UILabel;
+        label.text = displayData[indexPath.row]["title"];
+        
+        //cell.textLabel?.text = displayData[indexPath.row]["title"];
         
         //cell.textLabel?.text = members[indexPath.row].mName;
         
@@ -43,7 +54,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(displayData[indexPath.row]);
         if let pid = displayData[indexPath.row]["coupleId"] {
-            fetchProperData(pid: Int(pid)!);
+            if Int(pid) != 0 {
+                parentId.append(Int(displayData[indexPath.row]["parentId"]!)!);
+                fetchProperData(pid: Int(pid)!);
+            }
         }
     }
     
@@ -71,6 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 var dic = ["title" : "", "coupleId": ""];
                 dic["coupleId"] = String(couple.coupleId);
+                dic["parentId"] = String(couple.pId);
                 
                 for mem in husWife {
                     
@@ -85,7 +100,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         tableView.reloadData();
-
+        if parentId.count > 0 {
+            backButton.isHidden = false;
+        }
+        else {
+            backButton.isHidden = true;
+        }
     };
     
     func fetchData() {
@@ -192,6 +212,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         insertData();
         //fetchData();
         fetchProperData(pid: 0);
+        
         //fetchProperData(pid: 1001);
     }
 
