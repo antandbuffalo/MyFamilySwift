@@ -77,15 +77,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //print(couples)
             for couple in couples {
                 
-                let memberPredicate = NSPredicate(format: "%K = %d", "coupleId", couple.coupleId);
+                let memberPredicate = NSPredicate(format: "%K = %d", "coupleId", couple.cId);
                 let fetchMembers: NSFetchRequest = Members.fetchRequest();
                 fetchMembers.predicate = memberPredicate;
                 
                 let husWife = try context.fetch(fetchMembers);
                 
                 var dic = ["title" : "", "coupleId": ""];
-                dic["coupleId"] = String(couple.coupleId);
-                dic["parentId"] = String(couple.pId);
+                dic["coupleId"] = String(couple.cId);
+                //dic["parentId"] = String(couple.pId);
                 
                 for mem in husWife {
                     
@@ -158,18 +158,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     print(item["mName"]);
                     //name = item["name"]
-                    if let mName = item["mName"] as? String {
-                        member.mName = mName;
-                    }
-                    if let coupleId = item["coupleId"] as? Int {
-                        member.coupleId = Int16(coupleId);
-                    }
-                    if let isDied = item["isDied"] as? Bool {
-                        member.isDied = isDied;
-                    }
                     if let mId = item["mId"] as? Int {
                         member.mId = Int16(mId);
                     }
+                    if let mName = item["mName"] as? String {
+                        member.mName = mName;
+                    }
+//                    if let coupleId = item["coupleId"] as? Int {
+//                        member.parentId = Int16(coupleId);
+//                    }
+//                    if let isDied = item["isDied"] as? Bool {
+//                        member.isDied = isDied;
+//                    }
                     appDelegate.saveContext();
                 }
             }
@@ -182,17 +182,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let couple = Couples(context: context);
                     
                     if let coupleId = item["coupleId"] as? Int {
-                        couple.coupleId = Int16(coupleId);
+                        couple.cId = Int16(coupleId);
                     }
-                    if let pId = item["pId"] as? Int {
-                        couple.pId = Int16(pId);
-                    }
+//                    if let pId = item["pId"] as? Int {
+//                        couple.pId = Int16(pId);
+//                    }
                     if let husbandId = item["husbandId"] as? Int {
                         couple.husbandId = Int16(husbandId);
                     }
                     if let wifeId = item["wifeId"] as? Int {
                         couple.wifeId = Int16(wifeId);
                     }
+                    
+                    //Linking the relationship
+                    let parentPredicate = NSPredicate(format: "%K = %d", "mId", item["husbandId"] as! Int);
+                    let fetchRequest: NSFetchRequest = Members.fetchRequest();
+                    fetchRequest.predicate = parentPredicate;
+                    do {
+                        let member = try context.fetch(fetchRequest)
+                        if member.count == 1 {
+                            member[0].parent = couple;
+                        }
+                    }
+                    catch {
+                        print("Some error during relationship linking");
+                    }
+
+                    
                     appDelegate.saveContext();
                 }
             }

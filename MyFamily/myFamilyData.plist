@@ -402,5 +402,57 @@
 			<real>1006</real>
 		</dict>
 	</array>
+	<key>TestMembers</key>
+	<array>
+		<dict>
+			<key>mId</key>
+			<integer>101</integer>
+			<key>mName</key>
+			<string>a</string>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>102</integer>
+			<key>mName</key>
+			<string>b</string>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>103</integer>
+			<key>mName</key>
+			<string>c</string>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>104</integer>
+			<key>mName</key>
+			<string>d</string>
+		</dict>
+		<dict>
+			<key>mId</key>
+			<integer>105</integer>
+			<key>mName</key>
+			<string>e</string>
+		</dict>
+	</array>
+	<key>TestCouples</key>
+	<array>
+		<dict>
+			<key>cId</key>
+			<real>1001</real>
+			<key>hubandId</key>
+			<integer>101</integer>
+			<key>wifeId</key>
+			<integer>102</integer>
+		</dict>
+		<dict>
+			<key>cId</key>
+			<real>1002</real>
+			<key>hubandId</key>
+			<integer>103</integer>
+			<key>wifeId</key>
+			<integer>104</integer>
+		</dict>
+	</array>
 </dict>
 </plist>
